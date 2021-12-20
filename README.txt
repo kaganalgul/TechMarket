@@ -10,6 +10,11 @@
 /tests
 * UnitTests
 ```
+### Packages
+```
+Ardalis.Specification
+
+```
 
 ### RESOURCES
 * https://github.com/dotnet-architecture/eShopOnWeb
