@@ -5,7 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ardalis.specification.EntityFrameworkCore" Version="5.2.0" />
+    <PackageReference Include="microsoft.aspnetcore.Identity.Entityframeworkcore" Version="5.0.13" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.13" />
+    <PackageReference Include="Npgsql.Entityframeworkcore.postgresql" Version="5.0.10" />
   </ItemGroup>
 
   <ItemGroup>
