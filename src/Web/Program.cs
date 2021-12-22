@@ -1,19 +1,27 @@
 using Infrastructure.Data;
+using Infrastructure.Identity;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Threading.Tasks;
 
 namespace Web
 {
     public class Program
     {
-        public static async void Main(string[] args)
+        public async static Task Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
+
             using (var scope = host.Services.CreateScope())
             {
                 var marketContext = scope.ServiceProvider.GetRequiredService<MarketContext>();
                 await MarketContextSeed.SeedAsync(marketContext);
+
+                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+                await AppIdentityDbContextSeed.SeedAsync(roleManager, userManager);
             }
 
             host.Run();
